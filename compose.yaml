@@ -1,0 +1,63 @@
+services:
+  adminer:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    container_name: ${CONTAINER_NAME}
+    restart: unless-stopped
+    user: ${UID}:${GID}
+    security_opt:
+      - no-new-privileges=true
+    read_only: true
+    tmpfs:
+      - /tmp # php sessions
+    cap_drop:
+      - ALL
+
+    environment:
+      TZ: ${TZ}
+
+    # mount sql directory to store dumps or sqlite files
+    volumes:
+      - .docker/sql:/sql:ro
+
+    networks:
+      - service-net
+      - traefik-net
+
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "--timeout=5", "http://127.0.0.1:${TRAEFIK_PORT}"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+    # limit resources
+    cpus: 0.25
+    mem_limit: 32m
+    pids_limit: 10
+
+    # logging
+    logging:
+      driver: json-file
+      options:
+        max-size: 2m
+        max-file: 3
+
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${TRAEFIK_NET}" # force provider network if not defined in traefik config
+      - "traefik.http.routers.${CONTAINER_NAME}-https.rule=Host(`${TRAEFIK_HOST}`)"
+      - "traefik.http.routers.${CONTAINER_NAME}-https.entrypoints=websecure"
+      - "traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port=${TRAEFIK_PORT}"
+
+networks:
+  service-net:
+    internal: true
+    name: ${SERVICE_NET}
+  traefik-net:
+    external: true
+    name: ${TRAEFIK_NET}
