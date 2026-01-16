@@ -158,6 +158,13 @@ Then use `host.docker.internal` as server in the login form.
 
 Place your SQLite file in `.docker/sql/` and use `/sql/filename.db` as server in the login form.
 
+## Alternatives
+
+- [TimWolla/docker-adminer](https://github.com/TimWolla/docker-adminer) - Official Adminer Docker image
+- [DbGate](https://dbgate.org/) - Web/desktop client, multi-database
+- [DBeaver](https://dbeaver.io/) - Desktop client, multi-database
+- [CloudBeaver](https://cloudbeaver.io/) - Web-based DBeaver, self-hosted
+
 ## Resources
 
 - Adminer official site: <https://www.adminer.org/en/>

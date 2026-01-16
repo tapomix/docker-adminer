@@ -15,7 +15,7 @@ All notable changes to this project will be documented in this file.
 - Environment variables for login form pre-fill (`ADMINER_DEFAULT_*`)
 - Dark theme support via `ADMINER_THEME`
 - Docker Compose configuration with Traefik integration
-- Documentation
+- Documentation [README](README.md)
 
 ---
 
