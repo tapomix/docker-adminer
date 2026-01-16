@@ -22,9 +22,6 @@ COPY .docker/custom-php.ini /etc/php84/conf.d/20-adminer.ini
 
 WORKDIR /app
 
-# Copy PHP files and config
-COPY --chown=${UID}:${GID} src .
-
 USER ${USER}
 
 ARG ADMINER_VERSION=5.4.1
@@ -53,6 +50,9 @@ RUN \
     && mv ${TMP_EXTRACT_DIR}/plugins ./plugins \
     # Clear tmp files
     && rm -rf ${TMP_SRC_FILE} ${TMP_EXTRACT_DIR}
+
+# Copy PHP files and config
+COPY --chown=${UID}:${GID} src .
 
 EXPOSE 8080
 
