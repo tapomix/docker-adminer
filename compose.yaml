@@ -18,6 +18,11 @@ services:
       - ALL
 
     environment:
+      ADMINER_DEFAULT_DB: ${ADMINER_DEFAULT_DB}
+      ADMINER_DEFAULT_DRIVER: ${ADMINER_DEFAULT_DRIVER}
+      ADMINER_DEFAULT_SERVER: ${ADMINER_DEFAULT_SERVER}
+      ADMINER_DEFAULT_USERNAME: ${ADMINER_DEFAULT_USERNAME}
+      ADMINER_THEME: ${ADMINER_THEME}
       TZ: ${TZ}
 
     # mount sql directory to store dumps or sqlite files
