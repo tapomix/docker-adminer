@@ -1,0 +1,17 @@
+# ide
+/.idea/
+/.vscode/
+
+# claude
+/.claude/
+/CLAUDE.md
+
+# config
+/.env
+/compose.override.yaml
+
+# adminer plugins list
+/src/adminer-plugins.php
+
+# misc
+/TODO.md
