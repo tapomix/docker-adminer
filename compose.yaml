@@ -61,7 +61,7 @@ services:
 
 networks:
   service-net:
-    internal: true
+    external: true
     name: ${SERVICE_NET}
   traefik-net:
     external: true
