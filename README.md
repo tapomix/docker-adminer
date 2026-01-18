@@ -49,7 +49,7 @@ cp .env.dist .env
 | `TRAEFIK_NET` | Traefik network name (default: `traefik-net`) |
 | `TRAEFIK_PORT` | Port exposed by the service (default: `8080`) |
 | `TZ` | Timezone (default: `Etc/UTC`) |
-| `UID` / `GID` | User/Group ID for file permissions (default: `1000`) |
+| `USER_ID` / `GROUP_ID` | User/Group ID for file permissions (default: `1000`) |
 
 #### Adminer
 

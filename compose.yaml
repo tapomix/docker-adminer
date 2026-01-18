@@ -4,11 +4,11 @@ services:
       context: .
       dockerfile: .docker/Dockerfile
       args:
-        UID: ${UID}
-        GID: ${GID}
+        UID: ${USER_ID}
+        GID: ${GROUP_ID}
     container_name: ${CONTAINER_NAME}
     restart: unless-stopped
-    user: ${UID}:${GID}
+    user: ${USER_ID}:${GROUP_ID}
     security_opt:
       - no-new-privileges=true
     read_only: true
