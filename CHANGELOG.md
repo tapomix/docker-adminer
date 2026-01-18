@@ -5,7 +5,19 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.1.0] - 2025-01-16
+## [0.1.1] - 2026-01-18
+
+### Changed
+
+- Service network is now internal and must be created manually before starting the container
+
+### Added
+
+- Add alternatives section
+
+---
+
+## [0.1.0] - 2026-01-16
 
 ### Added
 
