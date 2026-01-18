@@ -22,6 +22,12 @@ Clone this repository:
 git clone https://github.com/tapomix/docker-adminer.git adminer
 ```
 
+Create the internal network for inter-service communication:
+
+```bash
+docker network create --internal adminer # or your SERVICE_NET value
+```
+
 ## Configuration
 
 ### Environment Variables
@@ -135,7 +141,7 @@ services:
 networks:
   db-net:
     external: true
-    name: adminer  # or your SERVICE_NET value
+    name: adminer # or your SERVICE_NET value
 ```
 
 Then use the container/service name as server (e.g., `<container>-db`) in the login form.
